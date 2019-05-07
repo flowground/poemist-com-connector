@@ -1,0 +1,49 @@
+{
+    "title": "Poemist",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/poemist.com/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.poemist.com/api/v1/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "randompoems": {
+            "main": "./lib/actions/randompoems.js",
+            "title": "randompoems",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/randompoems.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
